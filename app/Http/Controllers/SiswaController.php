@@ -23,7 +23,7 @@ class siswacontroller extends Controller
     {
         // untuk menyimpan data siswa
         // data yang di simpan adalah nama, alamat, dan jenis kelamin
-        
+
         $data = Student::create([
             'nama' => $request->nama,
             'alamat' => $request->alamat,
@@ -42,6 +42,14 @@ class siswacontroller extends Controller
         // menghapus siswa berdasarkan id yang ditemukan
         $data->delete();
         return redirect()->route('siswa');
+    }
+
+    public function edit($id) {
+        // menemukan siswa berdasarkan ig
+        $data = Student::findDrFail($id);
+
+        // mengirimkan data sesuai id ke view
+        return view('edit-siswa', compact('data'));
     }
 
 }
