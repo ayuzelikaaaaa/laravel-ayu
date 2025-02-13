@@ -20,6 +20,10 @@
 
         @foreach ($siswa as $sw)
 
+        {{-- foreach = pengulangan --}}
+
+        {{-- kalau array berbentuk kotak --}}
+
         <tr>
             <td>{{$loop->iteration}}</td>
             <td>{{$sw->nama}}</td>
@@ -29,9 +33,13 @@
                 <form action="{{ Route('siswa.delete', $sw['id']) }}" method="post">
                     @method('DELETE')
                     @csrf
-                    <button class="btn btn-danger" type="submit">Hapus</button>
+
+                    {{-- csrf = mengamankan yang direquest user --}}
+
+                    <button class="btn btn-danger" type="submit" onclick="return confirm('Yakin ingin menghapus data ini?')">Hapus</button>
+                    <a class="btn btn-warning" href="{{ Route('siswa.edit', $sw->id)}}">Edit</a>
                 </form>
-                <a clasas="btn btn-warning" href="{{ Route('siswa.edit', $sw->id)}}">Edit</a>
+
             </td>
         </tr>
         @endforeach

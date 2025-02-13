@@ -9,4 +9,5 @@ class Student extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    // untuk menjaga migrations agar bisa terisi
 }
